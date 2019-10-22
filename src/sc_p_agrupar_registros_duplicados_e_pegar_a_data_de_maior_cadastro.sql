@@ -1,6 +1,6 @@
 /*
 	Abaixo tem 6 registros onde existe CNPJs duplicados mas com a data de cadastro diferente.
-	… necesspario extrair somente os CNPJs onde a data de cadastro È maior.
+	√â necess√°rio extrair somente os CNPJs onde a data de cadastro √© maior.
 
 	Resultado esperado:
 	cnpj				dataCadastro
