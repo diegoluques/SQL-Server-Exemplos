@@ -1,15 +1,15 @@
 /*
-	Abaixo as tabelas A e B tem informaÁıes de CNPJs e nome de empresaS diferentes uma da outra.
-	… necess·rio unir as informaÁıes das duas tabelas em uma ˙nica e criar uma nova tabela C com as informaÁıes unidas.
+	Abaixo as tabelas A e B tem informa√ß√µes de CNPJs e nome de empresaS diferentes uma da outra.
+	√â necess√°rio unir as informa√ß√µes das duas tabelas em uma √∫nica e criar uma nova tabela C com as informa√ß√µes unidas.
 
-	Resultado esperado tabela tempor·ria: | Resultado esperado tabela salva no banco: 
-	CNPJ			nomeEmpresa			  | CNPJ			nomeEmpresa
-	00000000000191	EMPRESA A01			  | 00000000000191	EMPRESA A01
-	00000000000192	EMPRESA A02			  | 00000000000192	EMPRESA A02	
-	00000000000193	EMPRESA A03			  | 00000000000193	EMPRESA A03
-	00000000000291	EMPRESA B01			  | 00000000000291	EMPRESA B01	
-	00000000000292	EMPRESA B02			  | 00000000000292	EMPRESA B02	
-	00000000000293	EMPRESA B03			  | 00000000000293	EMPRESA B03
+	Resultado esperado tabela tempor√°ria: | Resultado esperado tabela salva no banco: 
+	CNPJ		nomeEmpresa	      | CNPJ		nomeEmpresa
+	00000000000191	EMPRESA A01	      | 00000000000191	EMPRESA A01
+	00000000000192	EMPRESA A02	      | 00000000000192	EMPRESA A02	
+	00000000000193	EMPRESA A03	      | 00000000000193	EMPRESA A03
+	00000000000291	EMPRESA B01	      | 00000000000291	EMPRESA B01	
+	00000000000292	EMPRESA B02	      | 00000000000292	EMPRESA B02	
+	00000000000293	EMPRESA B03	      | 00000000000293	EMPRESA B03
 */
 	DECLARE @tb_A AS TABLE (CNPJ VARCHAR(14), nomeEmpresa VARCHAR(100))
 	DECLARE @tb_B AS TABLE (CNPJ VARCHAR(14), nomeEmpresa VARCHAR(100))
@@ -17,31 +17,31 @@
 
 	INSERT INTO @tb_A 
 		VALUES  ('00000000000191', 'EMPRESA A01'),
-				('00000000000192', 'EMPRESA A02'),
-				('00000000000193', 'EMPRESA A03')
+			('00000000000192', 'EMPRESA A02'),
+			('00000000000193', 'EMPRESA A03')
 	
 	INSERT INTO @tb_B 
 		VALUES  ('00000000000291', 'EMPRESA B01'),
-				('00000000000292', 'EMPRESA B02'),
-				('00000000000293', 'EMPRESA B03')
+			('00000000000292', 'EMPRESA B02'),
+			('00000000000293', 'EMPRESA B03')
 	
-	--INSERINDO AS INFORMA«’ES EM UMA TABELA TEMPOR¡RIA
+	--INSERINDO AS INFORMA√á√ïES EM UMA TABELA TEMPOR√ÅRIA
 	INSERT INTO @tb_C_temporaria  
-					 SELECT * FROM (
-						SELECT * FROM @tb_A 
-					 	UNION
-					 	SELECT * FROM @tb_B 
-					 ) AS T
+				SELECT * FROM (
+					SELECT * FROM @tb_A 
+					 UNION
+					 SELECT * FROM @tb_B 
+				) AS T
 
-	--Listando as informaÁıes adicionadas na tabela tempor·ria
+	--Listando as informa√ß√µes adicionadas na tabela tempor√°ria
 	SELECT * FROM @tb_C_temporaria 
 
-	--Criando uma nova tabela no banco de dados com as informaÁıes das tabelas A e B
+	--Criando uma nova tabela no banco de dados com as informa√ß√µes das tabelas A e B
 	SELECT * INTO tb_criadaNoBanco FROM (
 		SELECT * FROM @tb_A 
 		UNION
 		SELECT * FROM @tb_B 
 	) AS T
 
-	--Listando as informaÁıes adicionadas na tabela 
+	--Listando as informa√ß√µes adicionadas na tabela 
 	SELECT * FROM tb_criadaNoBanco
