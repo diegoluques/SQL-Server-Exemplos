@@ -4,10 +4,11 @@
 	É necessário pegar somente o primeiro e-mail de cada cliente.
 
 	Resultado esperado:
-	idCliente  primeiroEmail
-	1		   emaildeteste1@teste.com.br
-	2		   emaildeteste3@teste.com.br
-	3		   emaildeteste5@teste.com.br
+	idCliente	primeiroEmail
+	1			emaildeteste1@teste.com.br
+	2			emaildeteste3@teste.com.br
+	3			emaildeteste5@teste.com.br
+	4			emaildeteste6@teste.com.br
 */
 
 DECLARE @tb_CLIENTE AS TABLE (idCliente int, email VARCHAR(120))
@@ -20,8 +21,7 @@ INSERT INTO @tb_CLIENTE
 		(4 , 'emaildeteste6@teste.com.br; emaildeteste7@teste.com.br')
 
 SELECT 
-	 idCliente, 
-	 
+	 idCliente,  
 	 CASE 
 		WHEN email LIKE '%;%' THEN 
 			SUBSTRING(email, 1, CHARINDEX(';', REPLACE(REPLACE(email, ' ', ';'), '/', ';'), 1) - 1) 
