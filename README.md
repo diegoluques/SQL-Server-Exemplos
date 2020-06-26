@@ -104,3 +104,6 @@ SELECT * FROM @tb_CLIENTE_A
 
 ### Resultado
 ![image](https://user-images.githubusercontent.com/55838972/67859977-371aa200-faf3-11e9-99ba-13145b8a8cf6.png)
+
+
+
