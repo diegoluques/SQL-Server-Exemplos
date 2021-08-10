@@ -27,3 +27,7 @@ DECLARE @tb_EMAIL AS TABLE (idCliente int, email varchar(120))
 		OUTER APPLY STRING_SPLIT(email,';') AS emailSeparado
 	) AS T
 	WHERE emailSeparado <> ''
+
+-- Caso apresente a Msg 208... Nome de objeto 'string_split' inválido.
+-- executa o comando abaixo
+--- ALTER DATABASE [DatabaseName] SET COMPATIBILITY_LEVEL = 130
